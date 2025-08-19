@@ -408,7 +408,7 @@ const IconWrapper = ({
 }) => (
    <div
       className={`
-        backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-300 border
+        backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-300 border cursor-pointer
         ${
            isHighlighted
               ? "dark:bg-gray-700/50 bg-gray-100/80 border-blue-400/50 dark:shadow-blue-500/20 shadow-blue-400/30 shadow-2xl animate-breathing-glow"
