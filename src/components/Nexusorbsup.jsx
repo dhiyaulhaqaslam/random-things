@@ -1,6 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import React, {
+   useState,
+   useEffect,
+   useRef,
+   ReactNode,
+   useMemo,
+   useCallback,
+} from "react";
 const SparkleIcon = () => (
    <svg
       height="1.8em"
@@ -507,28 +514,28 @@ const IconWrapper = ({
    children,
    className = "",
    isHighlighted = false,
-   isHovered = false,
-   animationDelay = 0,
+   isActive = false,
 }) => (
    <div
       className={`
-        backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-300 border cursor-pointer
-        ${
-           isHighlighted
-              ? "dark:bg-gray-700/50 bg-gray-100/80 border-blue-400/50 dark:shadow-blue-500/20 shadow-blue-400/30 shadow-2xl animate-breathing-glow"
-              : `dark:bg-white/5 bg-white/60 dark:border-white/20 border-gray-300/60 ${
-                   !isHovered && "animate-float"
-                }`
-        }
-        ${
-           isHovered
-              ? "dark:bg-gray-600/50 bg-gray-200/80 border-blue-400/60 scale-110 dark:shadow-blue-400/30 shadow-blue-400/40 shadow-2xl"
-              : "dark:hover:bg-white/10 hover:bg-gray-100/80 dark:hover:border-white/20 hover:border-gray-300/60"
-        }
-        ${className}
-    `}
+            backdrop-blur-xl rounded-2xl flex items-center justify-center border
+            ${
+               isHighlighted
+                  ? "dark:bg-gray-700/50 bg-gray-100/80 border-blue-400/50 dark:shadow-blue-500/20 shadow-blue-400/30 shadow-2xl animate-breathing-glow"
+                  : `dark:bg-white/5 bg-white/60 dark:border-white/20 border-gray-300/60 ${
+                       !isActive && "animate-float"
+                    }`
+            }
+            ${isActive && "border-blue-400/60"}
+            ${className}
+        `}
       style={{
-         animationDelay: `${animationDelay}s`,
+         transform: isActive ? "scale(1.1)" : "scale(1)",
+         backgroundColor: isActive
+            ? "rgba(129, 140, 248, 0.2)"
+            : "rgba(255, 255, 255, 0.05)",
+         transition:
+            "transform 0.8s ease-in-out, background-color 0.8s ease-in-out, border-color 0.8s ease-in-out",
       }}
    >
       {children}
@@ -537,8 +544,8 @@ const IconWrapper = ({
 const IconGrid = () => {
    const [activeId, setActiveId] = useState(1);
    const canvasRef = useRef(null);
+   const [hoveredId, setHoveredId] = useState(null); // ✅ ini yang kurang
    const particlesRef = useRef([]);
-   const [hoveredId, setHoveredId] = useState(null);
    const outerIcons = useMemo(
       () => [
          {
@@ -569,7 +576,7 @@ const IconGrid = () => {
          {
             id: 6,
             component: <GitHubIcon />,
-            url: "",
+            url: "https://github.com/dhiyaulhaqaslam",
          },
          {
             id: 7,
@@ -589,7 +596,7 @@ const IconGrid = () => {
          {
             id: 10,
             component: <ChessIcon />,
-            url: "",
+            url: "https://www.chess.com/member/gmlazarkk",
          },
       ],
       []
@@ -767,49 +774,43 @@ const IconGrid = () => {
       </div>
    );
 };
-
-export default function NexusOrb() {
+export default function NexusOrbSup() {
    return (
       <div className="w-full flex items-center justify-center font-sans p-4 sm:p-8 overflow-hidden">
-         {}
          <style>
             {`
                 @keyframes float {
                     0% { transform: translateY(0px); }
-                    50% { transform: translateY(-10px); }
+                    50% { transform: translateY(-8px); }
                     100% { transform: translateY(0px); }
                 }
                 .animate-float {
-                    animation: float 4s ease-in-out infinite;
+                    animation: float 6s ease-in-out infinite;
                 }
-
                 @keyframes breathing-glow {
-                    0% { box-shadow: 0 0 20px 0px rgba(59, 130, 246, 0.3); }
-                    50% { box-shadow: 0 0 35px 10px rgba(59, 130, 246, 0.1); }
-                    100% { box-shadow: 0 0 20px 0px rgba(59, 130, 246, 0.3); }
+                    0% { box-shadow: 0 0 20px 0px rgba(59, 130, 246, 0.3); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); }
+                    50% { box-shadow: 0 0 35px 10px rgba(59, 130, 246, 0.1); filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.1)); }
+                    100% { box-shadow: 0 0 20px 0px rgba(59, 130, 246, 0.3); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); }
                 }
                 @keyframes breathing-glow-light {
-                    0% { box-shadow: 0 0 20px 0px rgba(59, 130, 246, 0.2); }
-                    50% { box-shadow: 0 0 35px 10px rgba(59, 130, 246, 0.05); }
-                    100% { box-shadow: 0 0 20px 0px rgba(59, 130, 246, 0.2); }
+                    0% { box-shadow: 0 0 20px 0px rgba(59, 130, 246, 0.2); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.1)); }
+                    50% { box-shadow: 0 0 35px 10px rgba(59, 130, 246, 0.05); filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.05)); }
+                    100% { box-shadow: 0 0 20px 0px rgba(59, 130, 246, 0.2); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.1)); }
                 }
                 .animate-breathing-glow {
-                    animation: breathing-glow 3s ease-in-out infinite;
+                    animation: breathing-glow 4s ease-in-out infinite;
                 }
                 .dark .animate-breathing-glow {
-                    animation: breathing-glow 3s ease-in-out infinite;
+                    animation: breathing-glow 4s ease-in-out infinite;
                 }
                 :not(.dark) .animate-breathing-glow {
-                    animation: breathing-glow-light 3s ease-in-out infinite;
+                    animation: breathing-glow-light 4s ease-in-out infinite;
                 }
             `}
          </style>
-
-         {}
          <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
          </div>
-
          <div className="relative z-10 container mx-auto flex items-center justify-center">
             <IconGrid />
          </div>
