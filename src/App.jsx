@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './App.css'
-import NexusOrb from './components/SparkleIcon'
 import NexusOrbSup from './components/Nexusorbsup'
 
 function App() {
