@@ -349,7 +349,7 @@ const SlackIcon = () => (
       ></path>
    </svg>
 );
-const NotionIcon = () => (
+const ChessIcon = () => (
    <svg
       fill="#81B64C"
       role="img"
@@ -436,38 +436,47 @@ const IconGrid = () => {
       {
          id: 1,
          component: <SparkleIcon />,
+         url: "",
       },
       {
          id: 2,
          component: <FigmaIcon />,
+         url: "",
       },
       {
          id: 3,
          component: <CoralIcon />,
+         url: "",
       },
       {
          id: 4,
          component: <SlackIcon />,
+         url: "",
       },
       {
          id: 5,
          component: <PalmTreeIcon />,
+         url: "",
       },
       {
          id: 6,
          component: <GitHubIcon />,
+         url: "https://github.com/dhiyaulhaqaslam",
       },
       {
          id: 7,
          component: <FlowerIcon />,
+         url: "",
       },
       {
          id: 8,
          component: <PerplexityIcon />,
+         url: "",
       },
       {
          id: 9,
-         component: <NotionIcon />,
+         component: <ChessIcon />,
+         url: "https://www.chess.com/member/gmlazarkk",
       },
    ];
    const radius = 160;
@@ -589,21 +598,22 @@ const IconGrid = () => {
                };
                const isHovered = hoveredId === icon.id;
                return (
-                  <div
+                  <a
                      key={icon.id}
+                     href={icon.url}
+                     target="_blank"
+                     rel="noopener noreferrer"
                      className="absolute z-10"
                      style={iconStyle}
                      onMouseEnter={() => setHoveredId(icon.id)}
                      onMouseLeave={() => setHoveredId(null)}
                   >
                      <div className="-translate-x-1/2 -translate-y-1/2 relative">
-                        {}
                         <div
                            className={`absolute inset-[-20px] bg-blue-500/20 dark:bg-blue-500/30 rounded-full blur-2xl transition-opacity duration-300 ${
                               isHovered ? "opacity-100" : "opacity-0"
                            }`}
                         ></div>
-
                         <IconWrapper
                            className="w-16 h-16"
                            isHovered={isHovered}
@@ -612,7 +622,7 @@ const IconGrid = () => {
                            {icon.component}
                         </IconWrapper>
                      </div>
-                  </div>
+                  </a>
                );
             })}
          </div>
