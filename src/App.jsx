@@ -6,7 +6,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div>
+    <div className='flex justify-center items-center h-screen'>
       <NexusOrbSup />
     </div>
   )
