@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import NexusOrbSup from "./components/Nexusorbsup";
-import Footer from "./components/Footer";
+import Information from "./components/Information";
 
 function App(props) {
    const [count, setCount] = useState(0);
@@ -9,7 +9,7 @@ function App(props) {
    return (
       <div className="flex justify-center items-center h-screen">
          <NexusOrbSup />
-         <Footer
+         <Information
             name="Lazark Kertia"
             age="22 Years old"
             status="FullStack Web Developer"

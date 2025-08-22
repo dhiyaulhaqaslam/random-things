@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Greeting({ name, age, status }) {
+export default function Information({ name, age, status }) {
    return (
       <h1 className="text-lg font-semibold">
          Halo, <span className="text-fuchsia-500">{name}</span>! Umur kamu{" "}
