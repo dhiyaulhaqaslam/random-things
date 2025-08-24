@@ -69,7 +69,7 @@ interface Story {
 const StoryCard = ({ story }: { story: Story }) => {
    return (
       <motion.div
-         className="relative w-72 h-96 flex-shrink-0 rounded-lg overflow-hidden shadow-xl group"
+         className="relative w-72 h-[340px] flex-shrink-0 rounded-lg overflow-hidden shadow-xl group"
          whileHover={{
             y: -8,
             transition: {
@@ -107,17 +107,8 @@ export default function CarouselCards() {
       return () => window.removeEventListener("resize", calculateConstraints);
    }, []);
    return (
-      <div className="font-sans w-full py-12 md:py-20 flex flex-col items-center justify-center">
+      <div className="font-sans w-full py-12 md:py-16 flex flex-col items-center justify-center">
          <div className="w-full max-w-7xl mx-auto px-4">
-            <header className="text-center mb-12">
-               <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white ">
-                  Explore Worlds
-               </h1>
-               <p className="mt-4 text-lg text-gray-400">
-                  Drag to journey through magical landscapes.
-               </p>
-            </header>
-
             <motion.div
                ref={containerRef}
                className="overflow-hidden cursor-grab"
@@ -140,18 +131,6 @@ export default function CarouselCards() {
                   ))}
                </motion.div>
             </motion.div>
-
-            <div className="mt-10 flex items-center justify-center">
-               <a
-                  href="#"
-                  className="text-gray-300 font-semibold hover:text-white transition-colors duration-300 group"
-               >
-                  Discover More
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 ml-1">
-                     &rarr;
-                  </span>
-               </a>
-            </div>
          </div>
       </div>
    );

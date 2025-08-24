@@ -1,12 +1,12 @@
 import CarouselCards from "./components/enhanced-carousel";
-import GridBackgroundView from "./components/moving-grid";
+import HeroSection from "./components/hero";
 
 export default function Home() {
    return (
       <>
-         <GridBackgroundView />
+         <HeroSection />
          <div className="max-w-4xl mx-auto">
-            <CarouselCards />
+            <h1>TESTING</h1>
          </div>
       </>
    );
