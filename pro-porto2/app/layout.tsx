@@ -28,7 +28,7 @@ export default function RootLayout({
          <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
          >
-          <nav className="flex justify-between max-w-7xl mx-auto">
+          <nav className="flex justify-between max-w-7xl mx-auto px-2">
             <div className="flex gap-2">
               <Link href={""}>Icon</Link>
               <Link href={""}>Logo</Link>
@@ -40,7 +40,7 @@ export default function RootLayout({
               <Link href={""}>Contact</Link>
             </div>
           </nav>
-            <main className="max-w-7xl mx-auto">{children}</main>
+            <main className="max-w-7xl mx-auto px-2">{children}</main>
          </body>
       </html>
    );
